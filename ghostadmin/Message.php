@@ -5,12 +5,8 @@ ini_set('error_reporting', E_ALL ^ E_NOTICE);
 
 $id = !empty($_GET['id']) ? ($_GET['id']) : null;
 
-
-function hatagetir($hata)
-{
+function hatagetir($hata) {
 	echo '
-
-	
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,7 +26,7 @@ function hatagetir($hata)
 <form action="inc/auth.php" method="POST" >
 	<div id="login-inner">
 			<div id="forgotbox-text">
-		<p>	'.$hata.'</p>
+		<p>	' . $hata . '</p>
 		</div>
 		<div id="forgot-inner">
 		<table border="0" cellpadding="0" cellspacing="0">
@@ -43,7 +39,7 @@ function hatagetir($hata)
 		<div class="clear"></div>
 
 ';
-// ylmz, log sayfas�na g�nderme geli�tirmesi
+// ylmz, log sayfas�na g�nderme geli�tirmesi
 // *************************************************************************
 $retpage = trim($_GET['retpage']);
 if (empty($retpage)){
@@ -71,69 +67,26 @@ echo '
 </div>
 <!-- End: login-holder -->
 </body>
-</html>
-	
-	
-	
-	
-	
-	';
+</html>';
 }
 
+if($id == "Login"){
 
+    hatagetir("Kullanıcı Adı veya Şifreniz yanlış.");
 
+}elseif($id =="Logout"){
 
+    session_start();
+    session_destroy();
+    header("location: index.php");
 
- if($id == "Login"){
- 
- hatagetir("Kullanıcı Adı veya Şifreniz yanlış.");
-               ?>
-
- 		   
- <?php
-                
-        }elseif($id =="Logout"){
-		
-		
-session_start();
-session_destroy();
-header("location: index.php");
-
-
-
-
-                 ?>
-
-				
-
-               <?php
-                
-    }elseif($id =="Yetki"){   
- hatagetir(" Girişiniz onaylanmadı veya yetkisiz bir işlemde bulunmaya çalıştınız.");	
-                 ?>
-				 
-				       <?php
-                
+    }elseif($id =="Yetki"){
+        hatagetir(" Girişiniz onaylanmadı veya yetkisiz bir işlemde bulunmaya çalıştınız.");
     }elseif($id =="Basarili"){   
- hatagetir("İşleminiz başarıyla tamamlanmıştır.");	
-                 ?>
-
-
-                 <?php
-
+        hatagetir("İşleminiz başarıyla tamamlanmıştır.");
     }elseif($id =="Password"){
-	 hatagetir("Ghost Admin şifresi başarıyla değiştirildi.");
-	
-	?>
-
-<?php          
-
-                      }elseif($id =="Hata"){
-					  	 hatagetir("Operating System Not Found : )Bir sorun oluştu XP Mavi ekrana benziyor :) ");
-            ?>
-
-            <?php
-                        }
-                        
-                    
+	    hatagetir("Ghost Admin şifresi başarıyla değiştirildi.");
+    }elseif($id =="Hata"){
+		hatagetir("Operating System Not Found : )Bir sorun oluştu XP Mavi ekrana benziyor :) ");
+    }
 ?>
